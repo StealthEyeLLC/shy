@@ -1,10 +1,26 @@
 [workspace]
+resolver = "2"
+
 members = [
     "core",
+    "domains",
+    "domains/photoshy",
     "whitehat",
     "coordinator",
-    "domains",
-    "domains/echo_domain",
     "cli",
 ]
-resolver = "2"
+
+[workspace.package]
+version = "0.10.0"
+edition = "2021"
+license = "Proprietary"
+authors = ["StealthEye LLC"]
+
+[workspace.dependencies]
+# Shared internal crates
+core = { path = "core" }
+domains = { path = "domains" }
+whitehat = { path = "whitehat" }
+coordinator = { path = "coordinator" }
+
+# External dependencies (only if/when needed)
