@@ -1,12 +1,10 @@
-use photoshy::{PhotoShyDomain, PhotoHandle, PhotoError};
+use photoshy::PhotoDomain;
+use core::{Domain, DomainId};
 
 #[test]
-fn photoshy_public_api_compiles() {
-    let domain = PhotoShyDomain::new();
+fn photoshy_domain_has_stable_id() {
+    let domain = PhotoDomain::new();
 
-    // Do NOT call ingest_photo in PASS 2A.
-    let _handle = PhotoHandle { id: "x".into() };
-    let _err = PhotoError::InvalidInput;
-
-    let _ = domain;
+    let id = domain.id();
+    assert_eq!(id, DomainId("photoshy".into()));
 }

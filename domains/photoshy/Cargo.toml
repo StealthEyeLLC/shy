@@ -1,8 +1,13 @@
 [package]
 name = "photoshy"
-version = "0.1.0"
+version = "0.10.0"
 edition = "2021"
+license = "Proprietary"
+publish = false
 
 [dependencies]
 core = { path = "../../core" }
+domains = { path = ".." }
 whitehat = { path = "../../whitehat" }
+
+[dev-dependencies]

@@ -1,36 +1,26 @@
+//! PhotoSHY domain
+//!
+//! PUBLIC API FROZEN — changes require version bump
+
 use core::{Domain, DomainId};
 
-/// PUBLIC API FROZEN — changes require version bump
-pub struct PhotoShyDomain;
+/// Canonical PhotoSHY domain type
+///
+/// NOTE:
+/// - Domain names are *generic* (PhotoDomain),
+///   not branded (PhotoShyDomain),
+///   for ecosystem consistency.
+#[derive(Debug, Default)]
+pub struct PhotoDomain;
 
-impl PhotoShyDomain {
+impl PhotoDomain {
     pub fn new() -> Self {
-        PhotoShyDomain
-    }
-
-    /// Accepts a photo input and returns a stable handle.
-    ///
-    /// Behavior intentionally undefined in PASS 2A.
-    pub fn ingest_photo(&self, _bytes: &[u8]) -> Result<PhotoHandle, PhotoError> {
-        todo!()
+        PhotoDomain
     }
 }
 
-/// PUBLIC API FROZEN — changes require version bump
-#[derive(Clone, Debug, PartialEq, Eq)]
-pub struct PhotoHandle {
-    pub id: String,
-}
-
-/// PUBLIC API FROZEN — changes require version bump
-#[derive(Clone, Debug, PartialEq, Eq)]
-pub enum PhotoError {
-    InvalidInput,
-    Rejected,
-}
-
-impl Domain for PhotoShyDomain {
+impl Domain for PhotoDomain {
     fn id(&self) -> DomainId {
-        DomainId("photoshy".into())
+        DomainId("photoshy".to_string())
     }
 }
