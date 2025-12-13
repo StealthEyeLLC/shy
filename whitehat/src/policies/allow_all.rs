@@ -11,6 +11,6 @@ impl AllowAllPolicy {
 
 impl Policy for AllowAllPolicy {
     fn evaluate(&self, _input: &str) -> Result<Decision, WhiteHatError> {
-        todo!()
+        Ok(Decision::Allow)
     }
 }
