@@ -11,7 +11,6 @@ impl CliFlow {
     }
 
     pub fn execute(&self, cli: &Cli, args: &[String]) -> Result<ExitCode, FlowState> {
-        let _ = (cli, args);
-        todo!()
+        cli.run(args)
     }
 }

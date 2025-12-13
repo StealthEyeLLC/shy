@@ -17,12 +17,18 @@ impl EndToEndFlow {
         domain: &dyn Domain,
         request: &dyn Request,
     ) -> Result<FlowState, CoordinatorError> {
-        let _ = (enforcement, policy, domain, request);
-        todo!()
+        // Governance-first: enforce before any capability execution.
+        let decision = enforcement
+            .evaluate(policy, domain, request)
+            .map_err(|_| CoordinatorError::InvalidRequest)?;
+
+        self.map_decision(decision)
     }
 
     pub fn map_decision(&self, decision: Decision) -> Result<FlowState, CoordinatorError> {
-        let _ = decision;
-        todo!()
+        match decision {
+            Decision::Allow => Ok(FlowState::Completed),
+            Decision::Deny => Ok(FlowState::Rejected),
+        }
     }
 }
