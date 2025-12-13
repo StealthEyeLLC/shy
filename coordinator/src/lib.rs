@@ -6,3 +6,4 @@ pub mod enforcement;
 pub use api::*;
 pub use flow::*;
 pub use errors::*;
+pub use enforcement::*;
