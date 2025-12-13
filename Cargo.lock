@@ -3,6 +3,13 @@
 version = 4
 
 [[package]]
+name = "audioshy"
+version = "0.10.0"
+dependencies = [
+ "core",
+]
+
+[[package]]
 name = "cli"
 version = "0.9.0"
 dependencies = [
@@ -32,12 +39,19 @@ dependencies = [
 ]
 
 [[package]]
-name = "echo_domain"
-version = "0.2.0"
+name = "photoshy"
+version = "0.10.0"
 dependencies = [
  "core",
  "domains",
  "whitehat",
+]
+
+[[package]]
+name = "textshy"
+version = "0.10.0"
+dependencies = [
+ "core",
 ]
 
 [[package]]
