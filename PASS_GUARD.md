@@ -1,55 +1,71 @@
-# PASS GUARD
+# PASS_GUARD
 
-## Current Pass
-PASS 2A — Public Surface Lock
-
-## Authority
-This file exists to prevent pass mixing.
-If an action is not explicitly allowed in the current pass, it is forbidden.
+Project: SHY  
+Owner: StealthEye LLC  
+Purpose: Enforce build discipline, version freezes, and audit safety  
+Status: ACTIVE
 
 ---
 
-## Allowed
-- Public structs
-- Public enums
-- Public traits
-- Public function signatures
-- Re-exports from crate root (`lib.rs`)
-- Tests that import ONLY crate roots
-- Function bodies containing ONLY:
-  - `todo!()`
-  - `unimplemented!()`
+## CURRENT STATE
+
+STATUS: FROZEN  
+CURRENT VERSION: v0.9.0  
+FREEZE LEVEL: HARD  
+DATE FROZEN: 2025-12-12
 
 ---
 
-## Forbidden
-- Real logic or behavior
-- Fixing warnings caused by unused parameters
-- Internal module imports in tests
-- Cross-crate behavior assumptions
-- Renaming public items once depended upon
-- Moving files or modules
-- Adding or changing dependencies
-- Structural changes of any kind
+## FREEZE RULES (HARD)
+
+While a version is frozen, the following rules are absolute:
+
+ALLOWED:
+- Bug fixes that do NOT change public behavior
+- Explicitly approved safety fixes
+- Documentation updates
+- Test additions or corrections
+- Version bump commits
+
+FORBIDDEN:
+- New features
+- API changes
+- Signature changes
+- Behavior changes
+- Silent refactors
+- Renaming public items
+- Moving files that affect imports
+- “While I’m here” edits
+
+Any forbidden change REQUIRES:
+- A version bump
+- A new PASS_GUARD entry
+- A new tag
 
 ---
 
-## Exit Conditions
-- `cargo check` passes
-- `cargo test` compiles (runtime failures allowed)
+## VERSION POLICY
+
+Versioning follows semantic intent, not marketing.
+
+- PATCH (x.y.Z)
+  Bug fixes only. No behavior changes.
+
+- MINOR (x.Y.0)
+  Additive features. No breaking changes.
+
+- MAJOR (X.0.0)
+  Breaking changes, redesigns, or architectural shifts.
+
+No version may be modified after tagging.
 
 ---
 
-## Freeze Rules
-- The moment another crate depends on a public item, it is frozen
-- Frozen items may not be renamed, moved, or have signatures changed
-- Changes require a version bump and re-entry into the pass system
+## TAGGING RULES
 
----
+- Every freeze MUST be tagged
+- Tags are immutable
+- Reusing or overwriting tags is forbidden
+- Tag messages must describe the freeze intent
 
-## Notes
-- APIs describe contract
-- Tests describe intent
-- Behavior comes later
-- Warnings are acceptable in PASS 2A
-- If unsure, STOP and re-evaluate the pass
+Example:
