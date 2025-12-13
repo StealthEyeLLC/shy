@@ -3,12 +3,12 @@ resolver = "2"
 
 members = [
     "core",
-    "domains",
-    "domains/photoshy",
-    "domains/textshy",
     "whitehat",
     "coordinator",
     "cli",
+    "domains/photoshy",
+    "domains/textshy",
+    "domains/audioshy"
 ]
 
 [workspace.package]
@@ -16,3 +16,8 @@ version = "0.10.0"
 edition = "2021"
 license = "Proprietary"
 authors = ["StealthEye LLC"]
+
+[workspace.dependencies]
+core = { path = "core" }
+whitehat = { path = "whitehat" }
+coordinator = { path = "coordinator" }
