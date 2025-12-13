@@ -7,3 +7,5 @@ publish = false
 
 [dependencies]
 core = { path = "../../core" }
+
+[dev-dependencies]
