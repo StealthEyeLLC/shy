@@ -6,3 +6,4 @@ pub mod policies;
 pub use api::*;
 pub use policy::*;
 pub use errors::*;
+pub use policies::allow_all::*;
