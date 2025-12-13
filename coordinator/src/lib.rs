@@ -6,6 +6,8 @@ pub mod end_to_end;
 pub mod audit;
 pub mod storage;
 pub mod audit_sink;
+pub mod memory_store;
+pub mod memory_audit;
 
 pub use api::*;
 pub use flow::*;
@@ -15,3 +17,5 @@ pub use end_to_end::*;
 pub use audit::*;
 pub use storage::*;
 pub use audit_sink::*;
+pub use memory_store::*;
+pub use memory_audit::*;
