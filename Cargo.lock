@@ -4,10 +4,11 @@ version = 4
 
 [[package]]
 name = "cli"
-version = "0.1.0"
+version = "0.9.0"
 dependencies = [
  "coordinator",
  "core",
+ "whitehat",
 ]
 
 [[package]]
