@@ -1,0 +1,9 @@
+[package]
+name = "echo_domain"
+version = "0.2.0"
+edition = "2021"
+
+[dependencies]
+core = { path = "../../core" }
+whitehat = { path = "../../whitehat" }
+domains = { path = ".." }

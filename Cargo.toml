@@ -1,9 +1,10 @@
 [workspace]
 members = [
     "core",
-    "coordinator",
     "whitehat",
+    "coordinator",
     "domains",
+    "domains/echo_domain",
     "cli",
 ]
 resolver = "2"

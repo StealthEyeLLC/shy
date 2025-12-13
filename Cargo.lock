@@ -31,5 +31,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "echo_domain"
+version = "0.2.0"
+dependencies = [
+ "core",
+ "domains",
+ "whitehat",
+]
+
+[[package]]
 name = "whitehat"
 version = "0.1.0"
