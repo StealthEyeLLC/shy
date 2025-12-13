@@ -10,6 +10,6 @@ impl EchoDomain {
     }
 
     pub fn handle(&self, _request: &dyn Request) -> Decision {
-        todo!()
+        Decision::Allow
     }
 }
