@@ -10,7 +10,12 @@ impl CliReport {
     }
 
     pub fn map_flow_state(&self, state: FlowState) -> Result<(), RefusalReason> {
-        let _ = state;
-        todo!()
+        match state {
+            FlowState::Completed => Ok(()),
+            FlowState::Rejected => Err(RefusalReason::PolicyDenied),
+            FlowState::Initialized => {
+                panic!("CLI attempted to report an uninitialized flow state")
+            }
+        }
     }
 }
