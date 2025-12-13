@@ -16,7 +16,14 @@ impl StackedPolicy {
 }
 
 impl Policy for StackedPolicy {
-    fn evaluate(&self, _input: &str) -> Result<Decision, WhiteHatError> {
-        todo!()
+    fn evaluate(&self, input: &str) -> Result<Decision, WhiteHatError> {
+        for policy in &self.policies {
+            match policy.evaluate(input)? {
+                Decision::Allow => continue,
+                Decision::Deny => return Ok(Decision::Deny),
+            }
+        }
+
+        Ok(Decision::Allow)
     }
 }
