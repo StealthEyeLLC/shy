@@ -15,9 +15,17 @@ impl TextDomain {
 
     /// Accepts text input and returns a stable handle.
     ///
-    /// Behavior intentionally undefined in PASS 2A.
-    pub fn ingest_text(&self, _text: &str) -> Result<TextHandle, TextError> {
-        todo!()
+    /// Deterministic behavior:
+    /// - Empty or whitespace-only input is rejected
+    /// - Non-empty input yields a stable handle
+    pub fn ingest_text(&self, text: &str) -> Result<TextHandle, TextError> {
+        if text.trim().is_empty() {
+            Err(TextError::InvalidInput)
+        } else {
+            Ok(TextHandle {
+                id: "textshy:handle".to_string(),
+            })
+        }
     }
 }
 
@@ -27,13 +35,13 @@ impl Domain for TextDomain {
     }
 }
 
-/// Public handle type (API surface only)
+/// Public handle type (API surface)
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct TextHandle {
     pub id: String,
 }
 
-/// Public error type (API surface only)
+/// Public error type (API surface)
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum TextError {
     InvalidInput,
