@@ -1,13 +1,6 @@
-// PUBLIC API FROZEN — changes require version bump
-use crate::{Decision, Reason, WhiteHatError};
+use crate::{Decision, WhiteHatError};
 
+/// PUBLIC API FROZEN — changes require version bump
 pub trait Policy {
     fn evaluate(&self, input: &str) -> Result<Decision, WhiteHatError>;
-}
-
-pub fn enforce(
-    policy: &dyn Policy,
-    input: &str,
-) -> Result<Decision, WhiteHatError> {
-    policy.evaluate(input)
 }

@@ -1,5 +1,14 @@
-#[derive(Debug, Clone, PartialEq, Eq)]
+/// Coordinator-level errors
+#[derive(Debug)]
 pub enum CoordinatorError {
-    GovernanceDenied,
-    InvalidRequest,
+    InvalidPolicy,
+    ExecutionFailed,
+}
+
+/// Public flow outcome state
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum FlowState {
+    Initialized,
+    Completed,
+    Rejected,
 }

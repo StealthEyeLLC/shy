@@ -1,22 +1,21 @@
-// PUBLIC API FROZEN — changes require version bump
-use crate::{CoordinatorError, FlowState};
-use core::{Domain, Request};
-use whitehat::{Decision, Policy};
+use crate::CoordinatorError;
+use whitehat::Policy;
 
-pub trait Coordinator {
-    fn handle(
-        &self,
-        policy: &dyn Policy,
-        domain: &dyn Domain,
-        request: &dyn Request,
-    ) -> Result<FlowState, CoordinatorError>;
+/// Public coordinator entry surface
+pub struct Coordinator {
+    policy: Box<dyn Policy>,
 }
 
-pub fn run(
-    coordinator: &dyn Coordinator,
-    policy: &dyn Policy,
-    domain: &dyn Domain,
-    request: &dyn Request,
-) -> Result<FlowState, CoordinatorError> {
-    coordinator.handle(policy, domain, request)
+impl Coordinator {
+    pub fn new(policy: Box<dyn Policy>) -> Self {
+        Self { policy }
+    }
+
+    pub fn policy(&self) -> &dyn Policy {
+        &*self.policy
+    }
+
+    pub fn validate(&self) -> Result<(), CoordinatorError> {
+        Ok(())
+    }
 }

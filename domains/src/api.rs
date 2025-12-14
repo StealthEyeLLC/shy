@@ -1,14 +1,11 @@
-// PUBLIC API FROZEN — changes require version bump
-use core::{Domain, Request};
-use whitehat::Decision;
+use core::Request;
 
-pub trait DomainHandler {
-    fn handle(&self, request: &dyn Request) -> Decision;
+/// PUBLIC API FROZEN — changes require version bump
+pub trait Domain {
+    fn id(&self) -> String;
 }
 
-pub fn dispatch(
-    handler: &dyn DomainHandler,
-    request: &dyn Request,
-) -> Decision {
-    handler.handle(request)
+/// PUBLIC API FROZEN — changes require version bump
+pub trait DomainRequest: Request {
+    fn domain(&self) -> &dyn Domain;
 }
