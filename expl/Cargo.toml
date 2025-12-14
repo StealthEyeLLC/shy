@@ -1,5 +1,5 @@
 [package]
-name = "coordinator"
+name = "expl"
 version = "0.1.0"
 edition = "2021"
 
@@ -10,6 +10,3 @@ hbr = { path = "../hbr" }
 wdn = { path = "../wdn" }
 clr = { path = "../clr" }
 chk = { path = "../chk" }
-expl = { path = "../expl" }
-doc = { path = "../doc" }
-whitehat = { path = "../whitehat" }
